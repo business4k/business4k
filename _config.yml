@@ -1,5 +1,15 @@
-title: Business 4K
-description: Stories behind the companies, people, and products shaping the business world
+title: "Business 4K"
+description: "Stories behind companies, people, products and business."
 url: "https://business4k.github.io"
-theme: minima
-lang: en
+baseurl: ""
+lang: "en"
+
+markdown: kramdown
+permalink: /articles/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
