@@ -1,0 +1,135 @@
+---
+layout: default
+title: Home
+description: "Business stories, company histories, people and products shaping the world."
+---
+
+{% assign latest_post = site.posts.first %}
+
+{% if latest_post %}
+
+<section class="hero-article">
+
+  {% if latest_post.image %}
+  <a href="{{ latest_post.url | relative_url }}" aria-label="{{ latest_post.title }}">
+    <img
+      class="hero-image"
+      src="{{ latest_post.image | relative_url }}"
+      alt="{{ latest_post.image_alt | default: latest_post.title }}"
+      loading="eager"
+    >
+  </a>
+  {% endif %}
+
+  <div class="hero-info">
+
+    <div class="article-category">
+      {{ latest_post.category | default: "Business" }}
+    </div>
+
+    <h1 class="hero-title">
+      <a
+        href="{{ latest_post.url | relative_url }}"
+        style="color: inherit; text-decoration: none;"
+      >
+        {{ latest_post.title }}
+      </a>
+    </h1>
+
+    {% if latest_post.description %}
+    <p class="article-excerpt">
+      {{ latest_post.description }}
+    </p>
+    {% elsif latest_post.excerpt %}
+    <p class="article-excerpt">
+      {{ latest_post.excerpt | strip_html | truncate: 180 }}
+    </p>
+    {% endif %}
+
+    <div class="article-meta">
+      {{ latest_post.date | date: "%B %d, %Y" }}
+
+      {% if latest_post.read_time %}
+        · {{ latest_post.read_time }} min read
+      {% endif %}
+    </div>
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+<section class="articles-section">
+
+  <h2 class="section-title">
+    Latest Stories
+  </h2>
+
+  {% if site.posts.size > 1 %}
+
+  <div class="article-grid">
+
+    {% for post in site.posts offset:1 %}
+
+    <article class="article-card">
+
+      {% if post.image %}
+      <a href="{{ post.url | relative_url }}" aria-label="{{ post.title }}">
+        <img
+          class="article-card-image"
+          src="{{ post.image | relative_url }}"
+          alt="{{ post.image_alt | default: post.title }}"
+          loading="lazy"
+        >
+      </a>
+      {% endif %}
+
+      <div class="article-card-category">
+        {{ post.category | default: "Business" }}
+      </div>
+
+      <h3 class="article-card-title">
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+      </h3>
+
+      {% if post.description %}
+      <p>
+        {{ post.description }}
+      </p>
+      {% endif %}
+
+      <div class="article-card-meta">
+
+        {{ post.date | date: "%B %d, %Y" }}
+
+        {% if post.read_time %}
+          · {{ post.read_time }} min read
+        {% endif %}
+
+      </div>
+
+    </article>
+
+    {% endfor %}
+
+  </div>
+
+  {% else %}
+
+  <div class="article-empty">
+
+    <h3>No stories yet.</h3>
+
+    <p>
+      Business 4K stories will appear here as they are published.
+    </p>
+
+  </div>
+
+  {% endif %}
+
+</section>
