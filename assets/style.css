@@ -29,6 +29,7 @@ body {
   border-bottom: 1px solid #222222;
   padding: 20px 16px;
 }
+position: sticky;
 
 .header-inner {
   max-width: 1200px;
