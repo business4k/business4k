@@ -36,29 +36,33 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
 }
 
 .site-logo {
   color: #ffffff;
   text-decoration: none;
 
-  font-size: 30px;
+  font-size: 44px;
   font-weight: 900;
   letter-spacing: -1.5px;
 }
 
 .menu-button {
-  width: 52px;
-  height: 52px;
+  position: absolute;
+  right: 0;
 
-  border: 2px solid #ffffff;
-  border-radius: 50%;
+  width: auto;
+  height: auto;
 
-  background: #ffffff;
-  color: #000000;
+  border: none;
+  border-radius: 0;
 
-  font-size: 24px;
+  background: transparent;
+  color: #ffffff;
+
+  font-size: 28px;
   font-weight: 900;
 
   cursor: pointer;
@@ -164,7 +168,7 @@ main {
   font-size: 18px;
   line-height: 1.5;
 
-  color: #555555;
+  color: #111111;
 }
 
 .article-meta {
@@ -366,14 +370,11 @@ main {
   }
 
   .site-logo {
-    font-size: 25px;
+    font-size: 30px;
   }
 
   .menu-button {
-    width: 46px;
-    height: 46px;
-
-    font-size: 21px;
+    font-size: 24px;
   }
 
   /* NAVIGATION */
@@ -447,4 +448,4 @@ main {
   .footer-logo {
     font-size: 25px;
   }
-  }
+   }
