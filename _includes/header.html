@@ -1,13 +1,36 @@
 <header class="site-header">
   <div class="header-inner">
-
-    <a href="{{ '/' | relative_url }}" class="site-logo">
+    <a href="{{ '/' | relative_url }}" class="site-title">
       BUSINESS 4K
     </a>
-
-    <button class="menu-button" type="button" aria-label="Open menu">
+    <button class="menu-button" type="button" id="menuToggle">
       ☰
     </button>
-
   </div>
 </header>
+
+<div class="side-menu" id="sideMenu">
+  <div class="side-menu-top">
+    <img
+      src="{{ '/assets/images/1787614995462.png' | relative_url }}"
+      alt="Business 4K"
+      class="side-menu-logo"
+    >
+    <button class="menu-close" id="menuClose">✕</button>
+  </div>
+
+  <div class="side-menu-search">
+    <input type="text" id="siteSearch" placeholder="Search Business 4K">
+    <span class="search-icon">🔍</span>
+  </div>
+  <div id="searchResults" class="search-results"></div>
+
+  <nav class="side-menu-nav">
+    <div class="menu-item">Business <span class="arrow">›</span></div>
+    <div class="menu-item">Companies <span class="arrow">›</span></div>
+    <div class="menu-item">People <span class="arrow">›</span></div>
+    <div class="menu-item">Stories <span class="arrow">›</span></div>
+    <div class="menu-item">Products <span class="arrow">›</span></div>
+    <div class="menu-item">Reviews <span class="arrow">›</span></div>
+  </nav>
+</div>
