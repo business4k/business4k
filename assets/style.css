@@ -69,6 +69,8 @@ body {
   font-weight: 900;
 
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 /* ========================================
