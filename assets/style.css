@@ -539,3 +539,6 @@ main {
 }
 .arrow { font-size: 20px; color: #999; }
 
+.ticker-wrap {
+  position: static !important;
+}
