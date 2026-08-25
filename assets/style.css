@@ -541,6 +541,6 @@ main {
 
 .ticker-wrap {
   position: static !important;
-  height: 20px;
+  height: 28px;
   overflow: hidden;
 }
