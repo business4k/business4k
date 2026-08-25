@@ -477,8 +477,15 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
+@media (prefers-color-scheme: dark) {
+  .side-menu-logo {
+    filter: invert(1);
+  }
+}
+
+
 .side-menu-logo {
   height: 85px;
   width: auto;
