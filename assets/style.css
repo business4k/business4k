@@ -477,10 +477,10 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 .side-menu-logo {
-  height: 100px;
+  height: 85px;
   width: auto;
 }
 .menu-close {
