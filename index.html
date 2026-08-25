@@ -3,7 +3,27 @@ layout: default
 title: Home
 description: "Business stories, company histories, people and products shaping the world."
 ---
-
+<div class="ticker-wrap">
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+    {"proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100"},
+    {"proName": "NASDAQ:AAPL", "title": "Apple"},
+    {"proName": "NASDAQ:TSLA", "title": "Tesla"},
+    {"proName": "NASDAQ:GOOGL", "title": "Google"}
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "colorTheme": "dark",
+  "locale": "en"
+  }
+  </script>
+</div>
+</div>
 {% assign latest_post = site.posts.first %}
 
 {% if latest_post %}
