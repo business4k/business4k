@@ -1,7 +1,18 @@
 <footer class="site-footer">
+
   <div class="footer-logo">BUSINESS 4K</div>
-  <p>
-    &copy; {{ site.time | date: "%Y" }} Business 4K. All rights reserved.<br>
-    Stories behind companies, people, and products shaping the business world.
+
+  <p class="footer-copyright">
+    &copy; {{ site.time | date: "%Y" }} Business 4K. All rights reserved.
   </p>
+
+  <p class="footer-description">
+    GLOBAL ECONOMIC EVENTS, MARKET NEWS, COMPANY STORIES, AND THE FOUNDERS SHAPING THE BUSINESS WORLD.
+  </p>
+
+  <nav class="footer-links">
+    <a href="{{ '/about.html' | relative_url }}">About Us</a>
+    <a href="{{ '/privacy-policy.html' | relative_url }}">Privacy Policy</a>
+  </nav>
+
 </footer>
