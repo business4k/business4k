@@ -18,9 +18,9 @@
 </header>
 
 
+<!-- SIDE MENU -->
 <div class="side-menu" id="sideMenu">
 
-  <!-- Top -->
   <div class="side-menu-top">
 
     <img
@@ -41,7 +41,7 @@
   </div>
 
 
-  <!-- Search -->
+  <!-- SEARCH -->
   <div class="side-menu-search">
 
     <input
@@ -58,8 +58,9 @@
   <div id="searchResults" class="search-results"></div>
 
 
-  <!-- Navigation -->
+  <!-- NAVIGATION -->
   <nav class="side-menu-nav" id="sideMenuNav">
+
 
     <!-- NEWS -->
     <a
@@ -78,59 +79,35 @@
 
     <div class="submenu" id="submenu-world">
 
-      <a
-        href="{{ '/categories/world/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/world/' | relative_url }}" class="submenu-item">
         ALL
       </a>
 
-      <a
-        href="{{ '/categories/united-states/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/united-states/' | relative_url }}" class="submenu-item">
         UNITED STATES
       </a>
 
-      <a
-        href="{{ '/categories/china/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/china/' | relative_url }}" class="submenu-item">
         CHINA
       </a>
 
-      <a
-        href="{{ '/categories/europe/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/europe/' | relative_url }}" class="submenu-item">
         EUROPE
       </a>
 
-      <a
-        href="{{ '/categories/middle-east/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/middle-east/' | relative_url }}" class="submenu-item">
         MIDDLE EAST
       </a>
 
-      <a
-        href="{{ '/categories/africa/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/africa/' | relative_url }}" class="submenu-item">
         AFRICA
       </a>
 
-      <a
-        href="{{ '/categories/united-kingdom/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/united-kingdom/' | relative_url }}" class="submenu-item">
         UNITED KINGDOM
       </a>
 
-      <a
-        href="{{ '/categories/japan/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/japan/' | relative_url }}" class="submenu-item">
         JAPAN
       </a>
 
@@ -145,24 +122,15 @@
 
     <div class="submenu" id="submenu-companies">
 
-      <a
-        href="{{ '/categories/companies-news/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/companies-news/' | relative_url }}" class="submenu-item">
         COMPANIES NEWS
       </a>
 
-      <a
-        href="{{ '/categories/companies-stories/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/companies-stories/' | relative_url }}" class="submenu-item">
         COMPANIES STORIES
       </a>
 
-      <a
-        href="{{ '/categories/companies-founders/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/companies-founders/' | relative_url }}" class="submenu-item">
         COMPANIES FOUNDERS
       </a>
 
@@ -177,24 +145,15 @@
 
     <div class="submenu" id="submenu-markets">
 
-      <a
-        href="{{ '/categories/news/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/markets-news/' | relative_url }}" class="submenu-item">
         NEWS
       </a>
 
-      <a
-        href="{{ '/categories/stocks/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/stocks/' | relative_url }}" class="submenu-item">
         STOCKS
       </a>
 
-      <a
-        href="{{ '/categories/reports/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/reports/' | relative_url }}" class="submenu-item">
         REPORTS
       </a>
 
@@ -209,17 +168,11 @@
 
     <div class="submenu" id="submenu-economics">
 
-      <a
-        href="{{ '/categories/economics-news/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/economics-news/' | relative_url }}" class="submenu-item">
         ECONOMICS NEWS
       </a>
 
-      <a
-        href="{{ '/categories/future-economy/' | relative_url }}"
-        class="submenu-item"
-      >
+      <a href="{{ '/categories/future-economy/' | relative_url }}" class="submenu-item">
         FUTURE ECONOMY
       </a>
 
@@ -278,38 +231,93 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
+  /* =========================
+     OPEN / CLOSE SIDE MENU
+     ========================= */
+
+  const menuToggle = document.getElementById("menuToggle");
+  const menuClose = document.getElementById("menuClose");
+  const sideMenu = document.getElementById("sideMenu");
+
+
+  if (menuToggle && sideMenu) {
+
+    menuToggle.addEventListener("click", function () {
+      sideMenu.classList.add("open");
+      menuToggle.setAttribute("aria-expanded", "true");
+    });
+
+  }
+
+
+  if (menuClose && sideMenu) {
+
+    menuClose.addEventListener("click", function () {
+      sideMenu.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+
+  }
+
+
+  /* =========================
+     SUBMENUS
+     ========================= */
+
   const menuParents = document.querySelectorAll(".menu-parent");
+
 
   menuParents.forEach(function (parent) {
 
     parent.addEventListener("click", function () {
 
       const menuName = this.getAttribute("data-menu");
-      const submenu = document.getElementById("submenu-" + menuName);
+
+      const submenu =
+        document.getElementById("submenu-" + menuName);
 
       if (!submenu) return;
 
-      const isOpen = submenu.classList.contains("active");
 
-      // Close all submenus
-      document.querySelectorAll(".submenu").forEach(function (item) {
-        item.classList.remove("active");
-      });
+      const isOpen =
+        submenu.classList.contains("active");
 
-      // Reset all arrows
-      document.querySelectorAll(".menu-parent .arrow").forEach(function (arrow) {
-        arrow.textContent = "›";
-      });
 
-      // Open selected submenu
+      /* Close every submenu */
+
+      document
+        .querySelectorAll(".submenu")
+        .forEach(function (item) {
+
+          item.classList.remove("active");
+
+        });
+
+
+      /* Reset arrows */
+
+      document
+        .querySelectorAll(".menu-parent .arrow")
+        .forEach(function (arrow) {
+
+          arrow.textContent = "›";
+
+        });
+
+
+      /* Open selected submenu */
+
       if (!isOpen) {
+
         submenu.classList.add("active");
 
-        const arrow = this.querySelector(".arrow");
+        const arrow =
+          this.querySelector(".arrow");
 
         if (arrow) {
           arrow.textContent = "⌄";
         }
+
       }
 
     });
@@ -317,4 +325,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
-</script>
+                                </script>
