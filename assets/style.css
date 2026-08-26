@@ -332,35 +332,66 @@ main {
 
 /* ========================================
    FOOTER
-   ======================================== */
+======================================== */
 
 .site-footer {
-  margin-top: 60px;
-
-  padding: 45px 20px;
-
   background: #000000;
-
   color: #ffffff;
-
   text-align: center;
+  padding: 70px 24px 45px;
+  margin-top: 60px;
 }
 
 .footer-logo {
-  font-size: 28px;
-
+  color: #ffffff;
+  font-size: 32px;
   font-weight: 900;
-
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
+  margin-bottom: 14px;
 }
 
-.site-footer p {
-  color: #bbbbbb;
-
+.footer-copyright {
+  color: #aaaaaa;
   font-size: 14px;
-
-  line-height: 1.5;
+  margin: 0 0 32px;
 }
+
+.footer-description {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.footer-links a:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.footer-links a + a::before {
+  content: "·";
+  color: #777777;
+  margin-right: 22px;
+}
+
 
 /* ========================================
    MOBILE
