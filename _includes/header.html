@@ -1,36 +1,320 @@
 <header class="site-header">
   <div class="header-inner">
+
     <a href="{{ '/' | relative_url }}" class="site-logo">
       BUSINESS 4K
     </a>
-    <button class="menu-button" type="button" id="menuToggle">
+
+    <button
+      class="menu-button"
+      type="button"
+      id="menuToggle"
+      aria-label="Open menu"
+    >
       ☰
     </button>
+
   </div>
 </header>
 
+
 <div class="side-menu" id="sideMenu">
+
+  <!-- Top -->
   <div class="side-menu-top">
+
     <img
       src="{{ '/assets/images/1787614995462.png' | relative_url }}"
       alt="Business 4K"
       class="side-menu-logo"
     >
-    <button class="menu-close" id="menuClose">✕</button>
+
+    <button
+      class="menu-close"
+      type="button"
+      id="menuClose"
+      aria-label="Close menu"
+    >
+      ✕
+    </button>
+
   </div>
 
+
+  <!-- Search -->
   <div class="side-menu-search">
-    <input type="text" id="siteSearch" placeholder="Search Business 4K">
+
+    <input
+      type="text"
+      id="siteSearch"
+      placeholder="Search Business 4K"
+      autocomplete="off"
+    >
+
     <span class="search-icon">🔍</span>
+
   </div>
+
   <div id="searchResults" class="search-results"></div>
 
-  <nav class="side-menu-nav">
-    <div class="menu-item">Business <span class="arrow">›</span></div>
-    <div class="menu-item">Companies <span class="arrow">›</span></div>
-    <div class="menu-item">People <span class="arrow">›</span></div>
-    <div class="menu-item">Stories <span class="arrow">›</span></div>
-    <div class="menu-item">Products <span class="arrow">›</span></div>
-    <div class="menu-item">Reviews <span class="arrow">›</span></div>
+
+  <!-- Navigation -->
+  <nav class="side-menu-nav" id="sideMenuNav">
+
+    <!-- NEWS -->
+    <a
+      href="{{ '/categories/news/' | relative_url }}"
+      class="menu-item"
+    >
+      <span>NEWS</span>
+    </a>
+
+
+    <!-- WORLD -->
+    <div class="menu-item menu-parent" data-menu="world">
+      <span>WORLD</span>
+      <span class="arrow">›</span>
+    </div>
+
+    <div class="submenu" id="submenu-world">
+
+      <a
+        href="{{ '/categories/world/' | relative_url }}"
+        class="submenu-item"
+      >
+        ALL
+      </a>
+
+      <a
+        href="{{ '/categories/united-states/' | relative_url }}"
+        class="submenu-item"
+      >
+        UNITED STATES
+      </a>
+
+      <a
+        href="{{ '/categories/china/' | relative_url }}"
+        class="submenu-item"
+      >
+        CHINA
+      </a>
+
+      <a
+        href="{{ '/categories/europe/' | relative_url }}"
+        class="submenu-item"
+      >
+        EUROPE
+      </a>
+
+      <a
+        href="{{ '/categories/middle-east/' | relative_url }}"
+        class="submenu-item"
+      >
+        MIDDLE EAST
+      </a>
+
+      <a
+        href="{{ '/categories/africa/' | relative_url }}"
+        class="submenu-item"
+      >
+        AFRICA
+      </a>
+
+      <a
+        href="{{ '/categories/united-kingdom/' | relative_url }}"
+        class="submenu-item"
+      >
+        UNITED KINGDOM
+      </a>
+
+      <a
+        href="{{ '/categories/japan/' | relative_url }}"
+        class="submenu-item"
+      >
+        JAPAN
+      </a>
+
+    </div>
+
+
+    <!-- COMPANIES -->
+    <div class="menu-item menu-parent" data-menu="companies">
+      <span>COMPANIES</span>
+      <span class="arrow">›</span>
+    </div>
+
+    <div class="submenu" id="submenu-companies">
+
+      <a
+        href="{{ '/categories/companies-news/' | relative_url }}"
+        class="submenu-item"
+      >
+        COMPANIES NEWS
+      </a>
+
+      <a
+        href="{{ '/categories/companies-stories/' | relative_url }}"
+        class="submenu-item"
+      >
+        COMPANIES STORIES
+      </a>
+
+      <a
+        href="{{ '/categories/companies-founders/' | relative_url }}"
+        class="submenu-item"
+      >
+        COMPANIES FOUNDERS
+      </a>
+
+    </div>
+
+
+    <!-- MARKETS -->
+    <div class="menu-item menu-parent" data-menu="markets">
+      <span>MARKETS</span>
+      <span class="arrow">›</span>
+    </div>
+
+    <div class="submenu" id="submenu-markets">
+
+      <a
+        href="{{ '/categories/news/' | relative_url }}"
+        class="submenu-item"
+      >
+        NEWS
+      </a>
+
+      <a
+        href="{{ '/categories/stocks/' | relative_url }}"
+        class="submenu-item"
+      >
+        STOCKS
+      </a>
+
+      <a
+        href="{{ '/categories/reports/' | relative_url }}"
+        class="submenu-item"
+      >
+        REPORTS
+      </a>
+
+    </div>
+
+
+    <!-- ECONOMICS -->
+    <div class="menu-item menu-parent" data-menu="economics">
+      <span>ECONOMICS</span>
+      <span class="arrow">›</span>
+    </div>
+
+    <div class="submenu" id="submenu-economics">
+
+      <a
+        href="{{ '/categories/economics-news/' | relative_url }}"
+        class="submenu-item"
+      >
+        ECONOMICS NEWS
+      </a>
+
+      <a
+        href="{{ '/categories/future-economy/' | relative_url }}"
+        class="submenu-item"
+      >
+        FUTURE ECONOMY
+      </a>
+
+    </div>
+
+
+    <!-- TECHNOLOGY -->
+    <a
+      href="{{ '/categories/technology/' | relative_url }}"
+      class="menu-item"
+    >
+      <span>TECHNOLOGY</span>
+    </a>
+
+
+    <!-- BILLIONAIRES -->
+    <a
+      href="{{ '/categories/billionaires/' | relative_url }}"
+      class="menu-item"
+    >
+      <span>BILLIONAIRES</span>
+    </a>
+
+
+    <!-- STARTUPS -->
+    <a
+      href="{{ '/categories/startups/' | relative_url }}"
+      class="menu-item"
+    >
+      <span>STARTUPS</span>
+    </a>
+
+
+    <!-- POLITICS -->
+    <a
+      href="{{ '/categories/politics/' | relative_url }}"
+      class="menu-item"
+    >
+      <span>POLITICS</span>
+    </a>
+
+
+    <!-- GAMES -->
+    <a
+      href="{{ '/categories/games/' | relative_url }}"
+      class="menu-item"
+    >
+      <span>GAMES</span>
+    </a>
+
   </nav>
+
 </div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const menuParents = document.querySelectorAll(".menu-parent");
+
+  menuParents.forEach(function (parent) {
+
+    parent.addEventListener("click", function () {
+
+      const menuName = this.getAttribute("data-menu");
+      const submenu = document.getElementById("submenu-" + menuName);
+
+      if (!submenu) return;
+
+      const isOpen = submenu.classList.contains("active");
+
+      // Close all submenus
+      document.querySelectorAll(".submenu").forEach(function (item) {
+        item.classList.remove("active");
+      });
+
+      // Reset all arrows
+      document.querySelectorAll(".menu-parent .arrow").forEach(function (arrow) {
+        arrow.textContent = "›";
+      });
+
+      // Open selected submenu
+      if (!isOpen) {
+        submenu.classList.add("active");
+
+        const arrow = this.querySelector(".arrow");
+
+        if (arrow) {
+          arrow.textContent = "⌄";
+        }
+      }
+
+    });
+
+  });
+
+});
+</script>
