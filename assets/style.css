@@ -575,3 +575,60 @@ main {
   height: 40px;
   overflow: hidden;
 }
+
+/* BUSINESS 4K CATEGORY MENU */
+
+.side-menu-nav {
+  width: 100%;
+}
+
+.side-menu-nav > .menu-item,
+.side-menu-nav > a.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.side-menu-nav > .menu-parent {
+  cursor: pointer;
+}
+
+.menu-parent .arrow {
+  transition: transform 0.25s ease;
+}
+
+.side-menu-nav .submenu {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.side-menu-nav .submenu.active {
+  display: block;
+}
+
+.side-menu-nav .submenu-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 10px 20px 10px 40px;
+  font-size: 14px;
+}
+
+.side-menu-nav > .menu-parent {
+  font-weight: 600;
+}
+
+.side-menu-nav .submenu-item {
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.side-menu-nav .submenu-item:hover {
+  opacity: 1;
+}
