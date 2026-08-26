@@ -1,7 +1,6 @@
 title: "Business 4K"
 description: "Stories behind companies, people, products and business."
 url: "https://business4k.github.io"
-baseurl: "/business4k"
 lang: "en"
 
 markdown: kramdown
