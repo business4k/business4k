@@ -72,9 +72,9 @@
 
 
     <!-- WORLD -->
-    <div class="menu-item menu-parent" data-menu="world">
-      <span>WORLD</span>
-      <span class="arrow">›</span>
+    <div class="menu-item menu-parent" data-menu="world" data-url="{{ '/categories/world/' | relative_url }}">
+  <span>WORLD</span>
+  <span class="arrow">›</span>
     </div>
 
     <div class="submenu" id="submenu-world">
@@ -115,7 +115,7 @@
 
 
     <!-- COMPANIES -->
-    <div class="menu-item menu-parent" data-menu="companies">
+    <div class="menu-item menu-parent" data-menu="companies" data-url="{{ '/categories/companies/' | relative_url }}">
       <span>COMPANIES</span>
       <span class="arrow">›</span>
     </div>
@@ -138,7 +138,7 @@
 
 
     <!-- MARKETS -->
-    <div class="menu-item menu-parent" data-menu="markets">
+    <div class="menu-item menu-parent" data-menu="markets" data-url="{{ '/categories/markets/' | relative_url }}">
       <span>MARKETS</span>
       <span class="arrow">›</span>
     </div>
@@ -161,7 +161,7 @@
 
 
     <!-- ECONOMICS -->
-    <div class="menu-item menu-parent" data-menu="economics">
+    <div class="menu-item menu-parent" data-menu="economics" data-url="{{ '/categories/economics/' | relative_url }}">
       <span>ECONOMICS</span>
       <span class="arrow">›</span>
     </div>
@@ -274,72 +274,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const menuParents = document.querySelectorAll(".menu-parent");
 
+menuParents.forEach(function (parent) {
 
-  menuParents.forEach(function (parent) {
+  parent.addEventListener("click", function () {
 
-    parent.addEventListener("click", function () {
+    const menuName = this.getAttribute("data-menu");
 
-      const menuName = this.getAttribute("data-menu");
+    const submenu =
+      document.getElementById("submenu-" + menuName);
 
-      const submenu =
-        document.getElementById("submenu-" + menuName);
-
-      if (!submenu) return;
-
-
-      const isOpen =
-        submenu.classList.contains("active");
+    if (!submenu) return;
 
 
-      /* Close every submenu */
-
-      document
-        .querySelectorAll(".submenu")
-        .forEach(function (item) {
-
-          item.classList.remove("active");
-
-        });
-
-document
-  .querySelectorAll(".menu-parent")
-  .forEach(function (item) {
-
-    item.classList.remove("menu-open");
-
-  });
-      /* Reset arrows */
-
-      document
-        .querySelectorAll(".menu-parent .arrow")
-        .forEach(function (arrow) {
-
-          arrow.textContent = "›";
-
-        });
+    const isOpen =
+      submenu.classList.contains("active");
 
 
-      /* Open selected submenu */
+    if (isOpen) {
 
-      if (!isOpen) {
+      const url = this.getAttribute("data-url");
 
-        submenu.classList.add("active");
-
-        const arrow =
-        this.querySelector(".arrow");
-        
-        
-        this.classList.add("menu-open");
-      
-        if (arrow) {
-          arrow.textContent = "⌄";
-        }
-
+      if (url) {
+        window.location.href = url;
       }
 
-    });
+      return;
+
+    }
+
+
+    document
+      .querySelectorAll(".submenu")
+      .forEach(function (item) {
+
+        item.classList.remove("active");
+
+      });
+
+    document
+      .querySelectorAll(".menu-parent")
+      .forEach(function (item) {
+
+        item.classList.remove("menu-open");
+
+      });
+
+
+    document
+      .querySelectorAll(".menu-parent .arrow")
+      .forEach(function (arrow) {
+
+        arrow.textContent = "›";
+
+      });
+
+
+    submenu.classList.add("active");
+
+    this.classList.add("menu-open");
+
+    const arrow =
+      this.querySelector(".arrow");
+
+    if (arrow) {
+      arrow.textContent = "⌄";
+    }
 
   });
 
+});
+  
 });
                                 </script>
