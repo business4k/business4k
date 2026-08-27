@@ -631,3 +631,10 @@ main {
 .menu-parent .arrow {
   color: #999999 !important;
 }
+
+/* FINAL SUBMENU FONT SIZE */
+
+.side-menu .side-menu-nav .submenu a.submenu-item {
+  font-size: 22px !important;
+  line-height: 1.5 !important;
+}
