@@ -11,6 +11,8 @@ layout: default
 
   {% if page.category == "all" %}
     {% assign category_posts = site.posts %}
+  {% elsif page.subcategories %}
+    {% assign category_posts = site.posts | where_exp: "post", "page.subcategories contains post.category" %}
   {% else %}
     {% assign category_posts = site.posts | where: "category", page.category %}
   {% endif %}
