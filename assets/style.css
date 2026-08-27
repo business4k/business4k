@@ -597,6 +597,20 @@ main {
   cursor: pointer;
 }
 
+.side-menu-nav .submenu-item {
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+.side-menu-nav .submenu-item:visited {
+  color: #000000 !important;
+}
+
+.side-menu-nav .submenu-item:hover {
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
 .menu-parent .arrow {
   transition: transform 0.25s ease;
 }
