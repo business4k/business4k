@@ -301,7 +301,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+document
+  .querySelectorAll(".menu-parent")
+  .forEach(function (item) {
 
+    item.classList.remove("menu-open");
+
+  });
       /* Reset arrows */
 
       document
@@ -320,8 +326,11 @@ document.addEventListener("DOMContentLoaded", function () {
         submenu.classList.add("active");
 
         const arrow =
-          this.querySelector(".arrow");
-
+        this.querySelector(".arrow");
+        
+        
+        this.classList.add("menu-open");
+      
         if (arrow) {
           arrow.textContent = "⌄";
         }
