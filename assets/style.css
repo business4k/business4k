@@ -631,7 +631,9 @@ main {
 .menu-parent .arrow {
   color: #999999 !important;
 }
-
+.side-menu-nav .submenu-item:last-child {
+  border-bottom: 1px solid #ddd;
+}
 /* FINAL SUBMENU FONT SIZE */
 
 
@@ -639,4 +641,7 @@ main {
   font-size:  14px !important;
   line-height: 1 !important;
   font-weight: 500!important;
+}
+.side-menu-nav .menu-parent.menu-open {
+  border-bottom: none;
 }
