@@ -647,14 +647,13 @@ main {
 }
 
 /* CATEGORY PAGES */
-
 .category-page {
-  padding: 0 20px 40px;
+  padding: 40px 20px 40px;
 }
 
 .category-page-divider-top {
   border-top: 3px solid #000000;
-  margin: 40px 0 20px;
+  margin: 0 0 20px;
 }
 
 .category-page-title {
