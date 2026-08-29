@@ -683,3 +683,33 @@ main {
   gap: 32px;
   padding: 0;
 }
+/* STATIC PAGES */
+
+.static-page {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 35px 20px 60px;
+}
+
+.static-page h1 {
+  font-size: 40px;
+  font-weight: 900;
+  margin: 10px 0 20px;
+}
+
+.static-page h2 {
+  margin-top: 35px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.static-page p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.static-page a {
+  color: #000000;
+  font-weight: 700;
+}
