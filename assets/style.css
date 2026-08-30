@@ -397,7 +397,11 @@ main {
   text-decoration: none !important;
 }
 
-
+.footer-links a:not(:last-child)::after {
+  content: "·";
+  color: #aaaaaa;
+  margin-left: 22px;
+}
 
 
 /* ========================================
