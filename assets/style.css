@@ -664,11 +664,11 @@ main {
 }
 
 .category-page-title {
-  font-size: 42px;
+  font-size: 30px;
   font-weight: 900;
   margin: 0 0 20px;
   text-align: center;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .category-page-divider {
