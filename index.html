@@ -4,10 +4,7 @@ title: Home
 description: "Global economic events, market news, company stories, and the founders shaping the business world."
 ---
 
-<!-- =========================
-     MARKET TICKER
-========================= -->
-
+<!-- MARKET TICKER -->
 <div class="ticker-wrap">
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
@@ -17,35 +14,38 @@ description: "Global economic events, market news, company stories, and the foun
       async>
     {
       "symbols": [
-        {"proName":"TVC:GOLD","title":"Gold"},
-        {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
-        {"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},
-        {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
-        {"proName":"NASDAQ:AAPL","title":"Apple"},
-        {"proName":"NASDAQ:TSLA","title":"Tesla"},
-        {"proName":"OTC:XIACY","title":"Xiaomi"},
-        {"proName":"NASDAQ:GOOGL","title":"Google"},
-        {"proName":"NYSE:ORCL","title":"Oracle"},
-        {"proName":"NASDAQ:AMZN","title":"Amazon"},
-        {"proName":"NASDAQ:MSFT","title":"Microsoft"},
-        {"proName":"NASDAQ:NVDA","title":"Nvidia"},
-        {"proName":"TVC:UKOIL","title":"Brent Crude"},
-        {"proName":"NYSE:BABA","title":"Alibaba"},
-        {"proName":"NYSE:SONY","title":"Sony"},
-        {"proName":"TVC:SILVER","title":"Silver"},
-        {"proName":"NASDAQ:META","title":"Meta"},
-        {"proName":"NASDAQ:NFLX","title":"Netflix"},
-        {"proName":"NYSE:JPM","title":"JPMorgan"},
-        {"proName":"NYSE:V","title":"Visa"},
-        {"proName":"NYSE:XOM","title":"ExxonMobil"},
-        {"proName":"NASDAQ:AMD","title":"AMD"},
-        {"proName":"NYSE:KO","title":"Coca-Cola"},
-        {"proName":"NYSE:DIS","title":"Disney"},
-        {"proName":"NYSE:MCD","title":"McDonald's"},
-        {"proName":"NYSE:NKE","title":"Nike"},
-        {"proName":"NYSE:BA","title":"Boeing"},
-        {"proName":"NASDAQ:INTC","title":"Intel"},
-        {"proName":"NASDAQ:PYPL","title":"PayPal"}
+        {"proName": "TVC:GOLD", "title": "Gold"},
+        {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
+        {"proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100"},
+        {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+        {"proName": "NASDAQ:AAPL", "title": "Apple"},
+        {"proName": "NASDAQ:TSLA", "title": "Tesla"},
+        {"proName": "OTC:XIACY", "title": "Xiaomi"},
+        {"proName": "NASDAQ:SPCX", "title": "SpaceX"},
+        {"proName": "NASDAQ:GOOGL", "title": "Google"},
+        {"proName": "NYSE:ORCL", "title": "Oracle"},
+        {"proName": "NASDAQ:AMZN", "title": "Amazon"},
+        {"proName": "NASDAQ:MSFT", "title": "Microsoft"},
+        {"proName": "NASDAQ:NVDA", "title": "Nvidia"},
+        {"proName": "TVC:UKOIL", "title": "Brent Crude"},
+        {"proName": "NYSE:BABA", "title": "Alibaba"},
+        {"proName": "NYSE:BRK.B", "title": "Berkshire Hathaway"},
+        {"proName": "NYSE:SONY", "title": "Sony"},
+        {"proName": "TVC:SILVER", "title": "Silver"},
+        {"proName": "NASDAQ:META", "title": "Meta"},
+        {"proName": "NASDAQ:NFLX", "title": "Netflix"},
+        {"proName": "NYSE:JPM", "title": "JPMorgan"},
+        {"proName": "NYSE:V", "title": "Visa"},
+        {"proName": "NASDAQ:TTWO", "title": "Take-Two Interactive"},
+        {"proName": "NYSE:XOM", "title": "ExxonMobil"},
+        {"proName": "NASDAQ:AMD", "title": "AMD"},
+        {"proName": "NYSE:KO", "title": "Coca-Cola"},
+        {"proName": "NYSE:DIS", "title": "Disney"},
+        {"proName": "NYSE:MCD", "title": "McDonald's"},
+        {"proName": "NYSE:NKE", "title": "Nike"},
+        {"proName": "NYSE:BA", "title": "Boeing"},
+        {"proName": "NASDAQ:INTC", "title": "Intel"},
+        {"proName": "NASDAQ:PYPL", "title": "PayPal"}
       ],
       "showSymbolLogo": true,
       "isTransparent": false,
@@ -58,64 +58,61 @@ description: "Global economic events, market news, company stories, and the foun
 </div>
 
 
-<!-- =========================
-     GET ALL POSTS
-========================= -->
+<!-- TOP STORY -->
 
-{% assign all_posts = site.posts | sort: "date" | reverse %}
+{% assign latest_post = site.posts | sort: "date" | reverse | first %}
 
+{% if latest_post %}
 
-<!-- =========================
-     TOP STORY
-========================= -->
+<section class="hero-article">
 
-{% if all_posts.size > 0 %}
-
-{% assign top_story = all_posts.first %}
-
-<section class="top-story">
-
-  {% if top_story.image %}
+  {% if latest_post.image %}
   <a
-    href="{{ top_story.url | relative_url }}"
-    class="top-story-image-link"
+    href="{{ latest_post.url | relative_url }}"
+    aria-label="{{ latest_post.title }}"
   >
     <img
-      src="{{ top_story.image | relative_url }}"
-      alt="{{ top_story.image_alt | default: top_story.title }}"
-      class="top-story-image"
+      class="hero-image"
+      src="{{ latest_post.image | relative_url }}"
+      alt="{{ latest_post.image_alt | default: latest_post.title }}"
       loading="eager"
     >
   </a>
   {% endif %}
 
-  <div class="top-story-content">
+  <div class="hero-info">
 
-    <div class="story-category">
-      {{ top_story.category | default: "Business" }}
+    <div class="article-category">
+      {{ latest_post.category | default: "Business" }}
     </div>
 
-    <h1>
-      <a href="{{ top_story.url | relative_url }}">
-        {{ top_story.title }}
+    <h1 class="hero-title">
+      <a href="{{ latest_post.url | relative_url }}">
+        {{ latest_post.title }}
       </a>
     </h1>
 
-    {% if top_story.description %}
-    <p class="top-story-description">
-      {{ top_story.description }}
+    {% if latest_post.description %}
+    <p class="article-excerpt">
+      {{ latest_post.description }}
     </p>
-    {% elsif top_story.excerpt %}
-    <p class="top-story-description">
-      {{ top_story.excerpt | strip_html | truncate: 200 }}
+
+    {% elsif latest_post.excerpt %}
+
+    <p class="article-excerpt">
+      {{ latest_post.excerpt | strip_html | truncate: 180 }}
     </p>
+
     {% endif %}
 
-    <div class="story-meta">
-      {{ top_story.date | date: "%B %d, %Y" }}
-      {% if top_story.read_time %}
-        · {{ top_story.read_time }} min read
+    <div class="article-meta">
+
+      {{ latest_post.date | date: "%B %d, %Y" }}
+
+      {% if latest_post.read_time %}
+      · {{ latest_post.read_time }} min read
       {% endif %}
+
     </div>
 
   </div>
@@ -125,73 +122,65 @@ description: "Global economic events, market news, company stories, and the foun
 {% endif %}
 
 
-<!-- =========================
-     LATEST
-========================= -->
 
-<section class="homepage-section latest-section">
+<!-- LATEST -->
 
-  <div class="section-header">
+<section class="home-section latest-section">
 
-    <div class="section-title-wrap">
-      <h2>Latest</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/latest/' | relative_url }}"
-      class="more-link"
-    >
-      More →
-    </a>
+    <h2>Latest</h2>
 
   </div>
 
+  {% assign latest_posts = site.posts | sort: "date" | reverse %}
 
-  {% if all_posts.size > 1 %}
+  {% if latest_posts.size > 1 %}
 
-  <div class="story-list">
+  <div class="home-article-list">
 
-    {% for post in all_posts offset:1 limit:6 %}
+    {% for post in latest_posts limit:6 offset:1 %}
 
     <a
+      class="home-article-card"
       href="{{ post.url | relative_url }}"
-      class="story-list-item"
     >
 
-      <div class="story-list-content">
+      <div class="home-article-text">
 
-        <div class="story-category">
+        <div class="home-article-category">
           {{ post.category | default: "Business" }}
         </div>
 
-        <h3>
-          {{ post.title }}
-        </h3>
+        <h3>{{ post.title }}</h3>
 
         {% if post.description %}
         <p>
-          {{ post.description | strip_html | truncate: 150 }}
+          {{ post.description | truncate: 150 }}
         </p>
         {% endif %}
 
-        <div class="story-meta">
+        <div class="home-article-meta">
+
           {{ post.date | date: "%b %d, %Y" }}
 
           {% if post.read_time %}
-            · {{ post.read_time }} min read
+          · {{ post.read_time }} min read
           {% endif %}
+
         </div>
 
       </div>
 
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
-        class="story-list-image"
+        class="home-article-image"
         loading="lazy"
       >
+
       {% endif %}
 
     </a>
@@ -202,8 +191,8 @@ description: "Global economic events, market news, company stories, and the foun
 
   {% else %}
 
-  <div class="empty-section">
-    No stories yet.
+  <div class="home-empty">
+    NO ARTICLES YET
   </div>
 
   {% endif %}
@@ -211,38 +200,49 @@ description: "Global economic events, market news, company stories, and the foun
 </section>
 
 
-<!-- =========================
-     MOST POPULAR
-========================= -->
 
-<section class="homepage-section popular-section">
+<!-- MOST POPULAR -->
 
-  <div class="section-header">
+<section class="home-section popular-section">
 
-    <div class="section-title-wrap">
-      <h2>Most Popular</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/most-popular/' | relative_url }}"
-      class="more-link"
-    >
-      More →
-    </a>
+    <h2>Most Popular</h2>
 
   </div>
 
+  {% assign has_popular_score = false %}
 
-  {% assign popular_posts = site.posts | sort: "popular_score" | reverse %}
+  {% for p in site.posts %}
 
-  <div class="ranked-list">
+    {% if p.popular_score %}
+      {% assign has_popular_score = true %}
+      {% break %}
+    {% endif %}
+
+  {% endfor %}
+
+
+  {% if has_popular_score %}
+
+    {% assign popular_posts = site.posts | sort: "popular_score" | reverse %}
+
+  {% else %}
+
+    {% assign popular_posts = site.posts | sort: "date" | reverse %}
+
+  {% endif %}
+
+
+  {% if popular_posts.size > 0 %}
+
+  <div class="home-ranked-list">
 
     {% for post in popular_posts limit:5 %}
 
     <a
+      class="ranked-article"
       href="{{ post.url | relative_url }}"
-      class="ranked-item"
     >
 
       <div class="rank-number">
@@ -250,23 +250,22 @@ description: "Global economic events, market news, company stories, and the foun
       </div>
 
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
-        class="ranked-image"
         loading="lazy"
       >
+
       {% endif %}
 
-      <div class="ranked-content">
+      <div class="ranked-article-content">
 
-        <div class="story-category">
+        <div class="home-article-category">
           {{ post.category | default: "Business" }}
         </div>
 
-        <h3>
-          {{ post.title }}
-        </h3>
+        <h3>{{ post.title }}</h3>
 
       </div>
 
@@ -276,41 +275,60 @@ description: "Global economic events, market news, company stories, and the foun
 
   </div>
 
+  {% else %}
+
+  <div class="home-empty">
+    NO ARTICLES YET
+  </div>
+
+  {% endif %}
+
 </section>
 
 
-<!-- =========================
-     MOST READ
-========================= -->
 
-<section class="homepage-section read-section">
+<!-- MOST READ -->
 
-  <div class="section-header">
+<section class="home-section read-section">
 
-    <div class="section-title-wrap">
-      <h2>Most Read</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/most-read/' | relative_url }}"
-      class="more-link"
-    >
-      More →
-    </a>
+    <h2>Most Read</h2>
 
   </div>
 
+  {% assign has_read_score = false %}
 
-  {% assign read_posts = site.posts | sort: "read_score" | reverse %}
+  {% for p in site.posts %}
 
-  <div class="ranked-list">
+    {% if p.read_score %}
+      {% assign has_read_score = true %}
+      {% break %}
+    {% endif %}
+
+  {% endfor %}
+
+
+  {% if has_read_score %}
+
+    {% assign read_posts = site.posts | sort: "read_score" | reverse %}
+
+  {% else %}
+
+    {% assign read_posts = site.posts | sort: "date" | reverse %}
+
+  {% endif %}
+
+
+  {% if read_posts.size > 0 %}
+
+  <div class="home-ranked-list">
 
     {% for post in read_posts limit:5 %}
 
     <a
+      class="ranked-article"
       href="{{ post.url | relative_url }}"
-      class="ranked-item"
     >
 
       <div class="rank-number">
@@ -318,23 +336,22 @@ description: "Global economic events, market news, company stories, and the foun
       </div>
 
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
-        class="ranked-image"
         loading="lazy"
       >
+
       {% endif %}
 
-      <div class="ranked-content">
+      <div class="ranked-article-content">
 
-        <div class="story-category">
+        <div class="home-article-category">
           {{ post.category | default: "Business" }}
         </div>
 
-        <h3>
-          {{ post.title }}
-        </h3>
+        <h3>{{ post.title }}</h3>
 
       </div>
 
@@ -344,129 +361,79 @@ description: "Global economic events, market news, company stories, and the foun
 
   </div>
 
-</section>
+  {% else %}
 
-
-<!-- =========================
-     MARKETS
-========================= -->
-
-<section class="homepage-section category-section markets-section">
-
-  <div class="section-header">
-
-    <div class="section-title-wrap">
-      <h2>Markets</h2>
-      <span class="section-line"></span>
-    </div>
-
-    <a
-      href="{{ '/categories/markets/' | relative_url }}"
-      class="more-link"
-    >
-      More →
-    </a>
-
+  <div class="home-empty">
+    NO ARTICLES YET
   </div>
 
-
-  {% assign category_posts = site.posts
-    | where: "category", "Markets News"
-    | sort: "date"
-    | reverse %}
-
-  <div class="category-story-grid">
-
-    {% for post in category_posts limit:4 %}
-
-    <a
-      href="{{ post.url | relative_url }}"
-      class="category-story"
-    >
-
-      {% if post.image %}
-      <img
-        src="{{ post.image | relative_url }}"
-        alt="{{ post.image_alt | default: post.title }}"
-        loading="lazy"
-      >
-      {% endif %}
-
-      <div class="story-category">
-        {{ post.category }}
-      </div>
-
-      <h3>
-        {{ post.title }}
-      </h3>
-
-    </a>
-
-    {% endfor %}
-
-  </div>
-
-  {% if category_posts.size == 0 %}
-  <div class="empty-section">
-    No stories in this category yet.
-  </div>
   {% endif %}
 
 </section>
 
 
-<!-- =========================
-     COMPANIES
-========================= -->
 
-<section class="homepage-section category-section companies-section">
+<!-- MARKETS -->
 
-  <div class="section-header">
+<section class="home-section markets-section">
 
-    <div class="section-title-wrap">
-      <h2>Companies</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/categories/companies/' | relative_url }}"
-      class="more-link"
-    >
+    <h2>Markets</h2>
+
+    <a href="{{ '/categories/markets/' | relative_url }}">
       More →
     </a>
 
   </div>
 
 
-  {% assign category_posts = site.posts
-    | where: "category", "Companies News"
-    | sort: "date"
-    | reverse %}
+  {% assign markets_categories = "Markets News|Stocks|Reports" | split: "|" %}
 
-  <div class="category-story-grid">
+  {% assign markets_posts = "" | split: "" %}
 
-    {% for post in category_posts limit:4 %}
+  {% for cat in markets_categories %}
+
+    {% assign matching_posts = site.posts | where: "category", cat %}
+
+    {% assign markets_posts = markets_posts | concat: matching_posts %}
+
+  {% endfor %}
+
+  {% assign markets_posts = markets_posts | sort: "date" | reverse %}
+
+
+  {% if markets_posts.size > 0 %}
+
+  <div class="home-article-list">
+
+    {% for post in markets_posts limit:4 %}
 
     <a
+      class="home-article-card"
       href="{{ post.url | relative_url }}"
-      class="category-story"
     >
 
+      <div class="home-article-text">
+
+        <div class="home-article-category">
+          {{ post.category }}
+        </div>
+
+        <h3>{{ post.title }}</h3>
+
+      </div>
+
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
+        class="home-article-image"
         loading="lazy"
       >
+
       {% endif %}
-
-      <div class="story-category">
-        {{ post.category }}
-      </div>
-
-      <h3>
-        {{ post.title }}
-      </h3>
 
     </a>
 
@@ -474,67 +441,151 @@ description: "Global economic events, market news, company stories, and the foun
 
   </div>
 
-  {% if category_posts.size == 0 %}
-  <div class="empty-section">
-    No stories in this category yet.
+  {% else %}
+
+  <div class="home-empty">
+    NO ARTICLES YET
   </div>
+
   {% endif %}
 
 </section>
 
 
-<!-- =========================
-     TECHNOLOGY
-========================= -->
 
-<section class="homepage-section category-section technology-section">
+<!-- COMPANIES -->
 
-  <div class="section-header">
+<section class="home-section companies-section">
 
-    <div class="section-title-wrap">
-      <h2>Technology</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/categories/technology/' | relative_url }}"
-      class="more-link"
-    >
+    <h2>Companies</h2>
+
+    <a href="{{ '/categories/companies/' | relative_url }}">
       More →
     </a>
 
   </div>
 
 
-  {% assign category_posts = site.posts
+  {% assign companies_categories = "Companies News|Companies Stories|Companies Founders|Companies Strategy" | split: "|" %}
+
+  {% assign companies_posts = "" | split: "" %}
+
+  {% for cat in companies_categories %}
+
+    {% assign matching_posts = site.posts | where: "category", cat %}
+
+    {% assign companies_posts = companies_posts | concat: matching_posts %}
+
+  {% endfor %}
+
+  {% assign companies_posts = companies_posts | sort: "date" | reverse %}
+
+
+  {% if companies_posts.size > 0 %}
+
+  <div class="home-article-list">
+
+    {% for post in companies_posts limit:4 %}
+
+    <a
+      class="home-article-card"
+      href="{{ post.url | relative_url }}"
+    >
+
+      <div class="home-article-text">
+
+        <div class="home-article-category">
+          {{ post.category }}
+        </div>
+
+        <h3>{{ post.title }}</h3>
+
+      </div>
+
+      {% if post.image %}
+
+      <img
+        src="{{ post.image | relative_url }}"
+        alt="{{ post.image_alt | default: post.title }}"
+        class="home-article-image"
+        loading="lazy"
+      >
+
+      {% endif %}
+
+    </a>
+
+    {% endfor %}
+
+  </div>
+
+  {% else %}
+
+  <div class="home-empty">
+    NO ARTICLES YET
+  </div>
+
+  {% endif %}
+
+</section>
+
+
+
+<!-- TECHNOLOGY -->
+
+<section class="home-section technology-section">
+
+  <div class="section-heading">
+
+    <h2>Technology</h2>
+
+    <a href="{{ '/categories/technology/' | relative_url }}">
+      More →
+    </a>
+
+  </div>
+
+
+  {% assign technology_posts = site.posts
     | where: "category", "Technology"
     | sort: "date"
-    | reverse %}
+    | reverse
+  %}
 
-  <div class="category-story-grid">
 
-    {% for post in category_posts limit:4 %}
+  {% if technology_posts.size > 0 %}
+
+  <div class="home-article-list">
+
+    {% for post in technology_posts limit:4 %}
 
     <a
+      class="home-article-card"
       href="{{ post.url | relative_url }}"
-      class="category-story"
     >
 
+      <div class="home-article-text">
+
+        <div class="home-article-category">
+          {{ post.category }}
+        </div>
+
+        <h3>{{ post.title }}</h3>
+
+      </div>
+
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
+        class="home-article-image"
         loading="lazy"
       >
+
       {% endif %}
-
-      <div class="story-category">
-        {{ post.category }}
-      </div>
-
-      <h3>
-        {{ post.title }}
-      </h3>
 
     </a>
 
@@ -542,67 +593,79 @@ description: "Global economic events, market news, company stories, and the foun
 
   </div>
 
-  {% if category_posts.size == 0 %}
-  <div class="empty-section">
-    No stories in this category yet.
+  {% else %}
+
+  <div class="home-empty">
+    NO ARTICLES YET
   </div>
+
   {% endif %}
 
 </section>
 
 
-<!-- =========================
-     ECONOMICS
-========================= -->
 
-<section class="homepage-section category-section economics-section">
+<!-- ECONOMICS -->
 
-  <div class="section-header">
+<section class="home-section economics-section">
 
-    <div class="section-title-wrap">
-      <h2>Economics</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/categories/economics/' | relative_url }}"
-      class="more-link"
-    >
+    <h2>Economics</h2>
+
+    <a href="{{ '/categories/economics/' | relative_url }}">
       More →
     </a>
 
   </div>
 
 
-  {% assign category_posts = site.posts
-    | where: "category", "Economics News"
-    | sort: "date"
-    | reverse %}
+  {% assign economics_categories = "Economics News|Future Economy" | split: "|" %}
 
-  <div class="category-story-grid">
+  {% assign economics_posts = "" | split: "" %}
 
-    {% for post in category_posts limit:4 %}
+  {% for cat in economics_categories %}
+
+    {% assign matching_posts = site.posts | where: "category", cat %}
+
+    {% assign economics_posts = economics_posts | concat: matching_posts %}
+
+  {% endfor %}
+
+  {% assign economics_posts = economics_posts | sort: "date" | reverse %}
+
+
+  {% if economics_posts.size > 0 %}
+
+  <div class="home-article-list">
+
+    {% for post in economics_posts limit:4 %}
 
     <a
+      class="home-article-card"
       href="{{ post.url | relative_url }}"
-      class="category-story"
     >
 
+      <div class="home-article-text">
+
+        <div class="home-article-category">
+          {{ post.category }}
+        </div>
+
+        <h3>{{ post.title }}</h3>
+
+      </div>
+
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
+        class="home-article-image"
         loading="lazy"
       >
+
       {% endif %}
-
-      <div class="story-category">
-        {{ post.category }}
-      </div>
-
-      <h3>
-        {{ post.title }}
-      </h3>
 
     </a>
 
@@ -610,67 +673,79 @@ description: "Global economic events, market news, company stories, and the foun
 
   </div>
 
-  {% if category_posts.size == 0 %}
-  <div class="empty-section">
-    No stories in this category yet.
+  {% else %}
+
+  <div class="home-empty">
+    NO ARTICLES YET
   </div>
+
   {% endif %}
 
 </section>
 
 
-<!-- =========================
-     WORLD
-========================= -->
 
-<section class="homepage-section category-section world-section">
+<!-- WORLD -->
 
-  <div class="section-header">
+<section class="home-section world-section">
 
-    <div class="section-title-wrap">
-      <h2>World</h2>
-      <span class="section-line"></span>
-    </div>
+  <div class="section-heading">
 
-    <a
-      href="{{ '/categories/world/' | relative_url }}"
-      class="more-link"
-    >
+    <h2>World</h2>
+
+    <a href="{{ '/categories/world/' | relative_url }}">
       More →
     </a>
 
   </div>
 
 
-  {% assign category_posts = site.posts
-    | where: "category", "World"
-    | sort: "date"
-    | reverse %}
+  {% assign world_categories = "World|United States|China|Europe|Middle East|Africa|United Kingdom|Japan" | split: "|" %}
 
-  <div class="category-story-grid">
+  {% assign world_posts = "" | split: "" %}
 
-    {% for post in category_posts limit:4 %}
+  {% for cat in world_categories %}
+
+    {% assign matching_posts = site.posts | where: "category", cat %}
+
+    {% assign world_posts = world_posts | concat: matching_posts %}
+
+  {% endfor %}
+
+  {% assign world_posts = world_posts | sort: "date" | reverse %}
+
+
+  {% if world_posts.size > 0 %}
+
+  <div class="home-article-list">
+
+    {% for post in world_posts limit:4 %}
 
     <a
+      class="home-article-card"
       href="{{ post.url | relative_url }}"
-      class="category-story"
     >
 
+      <div class="home-article-text">
+
+        <div class="home-article-category">
+          {{ post.category }}
+        </div>
+
+        <h3>{{ post.title }}</h3>
+
+      </div>
+
       {% if post.image %}
+
       <img
         src="{{ post.image | relative_url }}"
         alt="{{ post.image_alt | default: post.title }}"
+        class="home-article-image"
         loading="lazy"
       >
+
       {% endif %}
-
-      <div class="story-category">
-        {{ post.category }}
-      </div>
-
-      <h3>
-        {{ post.title }}
-      </h3>
 
     </a>
 
@@ -678,10 +753,12 @@ description: "Global economic events, market news, company stories, and the foun
 
   </div>
 
-  {% if category_posts.size == 0 %}
-  <div class="empty-section">
-    No stories in this category yet.
+  {% else %}
+
+  <div class="home-empty">
+    NO ARTICLES YET
   </div>
+
   {% endif %}
 
 </section>
