@@ -1,20 +1,128 @@
 <footer class="site-footer">
 
-  <div class="footer-logo">BUSINESS 4K</div>
+  <div class="footer-main">
 
-  <p class="footer-copyright">
-    &copy; {{ site.time | date: "%Y" }} Business 4K. All rights reserved.
-  </p>
 
-  <p class="footer-description">
-    GLOBAL ECONOMIC EVENTS, MARKET NEWS, COMPANY STORIES, AND THE FOUNDERS SHAPING THE BUSINESS WORLD.
-  </p>
+    <!-- BRAND -->
 
-<nav class="footer-links">
-    <a href="{{ '/about/' | relative_url }}">About Us</a>
-    <a href="{{ '/advertising-policy/' | relative_url }}">Advertising Policy</a>
-    <a href="{{ '/terms-of-use/' | relative_url }}">Terms of Use</a>
-    <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
-    <a href="{{ '/contact/' | relative_url }}">Contact Us</a>
-  
-</nav>
+    <div class="footer-brand">
+
+      <a
+        href="{{ '/' | relative_url }}"
+        class="footer-logo"
+      >
+        BUSINESS 4K
+      </a>
+
+
+      <p class="footer-description">
+
+        In-depth reporting on business, markets,
+        technology, companies, and the global economy.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- SECTIONS -->
+
+    <div class="footer-column">
+
+      <h3>SECTIONS</h3>
+
+      <a href="{{ '/categories/news/' | relative_url }}">
+        NEWS
+      </a>
+
+      <a href="{{ '/categories/markets/' | relative_url }}">
+        MARKETS
+      </a>
+
+      <a href="{{ '/categories/companies/' | relative_url }}">
+        COMPANIES
+      </a>
+
+      <a href="{{ '/categories/technology/' | relative_url }}">
+        TECHNOLOGY
+      </a>
+
+      <a href="{{ '/categories/economics/' | relative_url }}">
+        ECONOMICS
+      </a>
+
+      <a href="{{ '/categories/world/' | relative_url }}">
+        WORLD
+      </a>
+
+    </div>
+
+
+
+    <!-- MORE -->
+
+    <div class="footer-column">
+
+      <h3>MORE</h3>
+
+      <a href="{{ '/categories/billionaires/' | relative_url }}">
+        BILLIONAIRES
+      </a>
+
+      <a href="{{ '/categories/startups/' | relative_url }}">
+        STARTUPS
+      </a>
+
+      <a href="{{ '/categories/politics/' | relative_url }}">
+        POLITICS
+      </a>
+
+      <a href="{{ '/categories/entertainment/' | relative_url }}">
+        ENTERTAINMENT
+      </a>
+
+      <a href="{{ '/categories/sports/' | relative_url }}">
+        SPORTS
+      </a>
+
+    </div>
+
+
+
+    <!-- COMPANY -->
+
+    <div class="footer-column">
+
+      <h3>COMPANY</h3>
+
+      <a href="{{ '/about/' | relative_url }}">
+        ABOUT US
+      </a>
+
+      <a href="{{ '/privacy-policy/' | relative_url }}">
+        PRIVACY POLICY
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- FOOTER BOTTOM -->
+
+  <div class="footer-bottom">
+
+    <div>
+      © {{ "now" | date: "%Y" }} BUSINESS 4K
+    </div>
+
+    <div>
+      ALL RIGHTS RESERVED.
+    </div>
+
+  </div>
+
+</footer>
