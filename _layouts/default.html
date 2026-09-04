@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en' }}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
-   {% assign cat_key = page.path | split: "/" | last | split: "." | first %}
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    {{ page.title | default: site.title }}
+    |
+    {{ site.title }}
+  </title>
 
   <meta
     name="description"
-    content="{{ page.description | default: site.data.categories[cat_key] | default: site.description }}"
+    content="{{ page.description | default: site.description }}"
   >
-  
 
   <link
     rel="stylesheet"
@@ -23,19 +31,24 @@
     type="image/jpeg"
     href="{{ '/assets/images/IMG_20260825_221224_981.jpg' | relative_url }}"
   >
+
 </head>
+
 
 <body>
 
   {% include header.html %}
 
+
   <main>
+
     {{ content }}
+
   </main>
+
 
   {% include footer.html %}
 
-  <script src="{{ '/assets/search.js' | relative_url }}"></script>
-
 </body>
+
 </html>
